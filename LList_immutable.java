@@ -4,48 +4,63 @@ public class LList_immutable<T> {
 	class Node<T> {
 		T value;
 		Node<T> next;
-		Node(T value, Node<T> next) { this.value = value; this.next = next; }
-		T getValue() {	return value;	}
-		void setValue(T value) {	this.value = value;	}
-		Node<T> getNext() {	return this.next;	}
-		void setNext(Node<T> next) {	this.next = next;	}
-		public String toString() { return value.toString(); }
+
+		Node(T value, Node<T> next) {
+			this.value = value; this.next = next;
+		}
+
+		T getValue() {
+			return value;	
+		}
+
+		void setValue(T value) {
+			this.value = value;
+		}
+
+		Node<T> getNext() {
+			return this.next;
+		}
+
+		void setNext(Node<T> next) {
+			this.next = next;
+		}
+
+		public String toString() {
+			return value.toString();
+		}
 	}
 
    	private Node<T> head;
+
 	public LList_immutable(){
 		head = null; 		
 	}
 
-	/* mutable version
-	public void insertFirst(T value) {	
-		head = new Node<T>(value, head);
+	// add code here that makes insertFirst() immutable 
+	// completed by Oscar but need to check if it is correct approach
+	public LList_immutable<T> insertFirst(T value) {
+		LList_immutable<T> newList = new LList_immutable<>(); // create new list
+		newList.head = new Node<T>(value, this.head); // add value first and old head after
+	
+		return newList;
 	}
-	*/
+	
+	public LList_immutable<T> insertAfter(Node<T> prevNode, T value) {
+		if (prevNode == null) {
+           		throw new IllegalArgumentException("prevNode is null");
+		}
 
-
-
-
-	Add code here that make insertFirst() immutable
-
-
-
-
-
-
-	/* mutable version
-	public void insertAfter(Node<T> prevNode, T value) {
-		if (prevNode == null)
-           		throw new IllegalArgumentException("prevNode is null");	
-
+		LList_immutable<T> newList = new LList_immutable<>();
 		prevNode.next = new Node<T>(value, prevNode.next);
+
+		return null;
 	}
-	*/
 	
 	
 	
 	
-	Add code here that make insertAfter() immutable
+	
+	//Add code here that make insertAfter() immutable
 	
 	
 	
