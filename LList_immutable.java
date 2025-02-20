@@ -36,6 +36,10 @@ public class LList_immutable<T> {
 		head = null; 		
 	}
 
+	public LList_immutable(Node<T> node){
+		head = node; 		
+	}
+
 	// add code here that makes insertFirst() immutable 
 	// completed by Oscar but need to check if it is correct approach
 	public LList_immutable<T> insertFirst(T value) {
@@ -45,20 +49,29 @@ public class LList_immutable<T> {
 		return newList;
 	}
 	
+
 	public LList_immutable<T> insertAfter(Node<T> prevNode, T value) {
 		if (prevNode == null) {
            		throw new IllegalArgumentException("prevNode is null");
 		}
 
-		LList_immutable<T> newList = new LList_immutable<>();
 		prevNode.next = new Node<T>(value, prevNode.next);
-
 		return null;
 	}
-	
-	
-	
-	
+	/*
+	 * added by Smita
+	 * Created a new constructor for LList_immutable class and helper method called copyList
+	 */
+
+	private Node<T> copyList(Node<T> current, Node<T> prevNode, Node<T> newNode) {
+		if (current == null) {
+			return null;
+		}
+		if (current == prevNode) {
+			return new Node<>(current.value, newNode);
+		}
+		return new Node<>(current.value, copyList(current.next, prevNode, newNode));
+	}
 	
 	//Add code here that make insertAfter() immutable
 	
