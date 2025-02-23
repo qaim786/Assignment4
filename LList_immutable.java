@@ -41,7 +41,7 @@ public class LList_immutable<T> {
 	}
 
 	// add code here that makes insertFirst() immutable 
-	// completed by Oscar but need to check if it is correct approach
+	// completed by Oscar but checked by Qaim who made modifications to the function
 	public LList_immutable<T> insertFirst(T value) {
 		LList_immutable<T> newList = new LList_immutable<>(); // create new list
 		newList.head = new Node<T>(value, this.head); // add value first and old head after
@@ -159,7 +159,7 @@ public class LList_immutable<T> {
 		SomeType item5 = new SomeType(500);
 		
 		///////////////////////////////////////////////////////////////////
-		// inserFirst()
+		// inserFirst() 
 		LList_immutable<SomeType> list0, list1, list2, list3, list4, list5;
 		
 		System.out.println("\n ////////////// insertFirst()");
