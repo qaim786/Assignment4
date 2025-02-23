@@ -55,14 +55,16 @@ public class LList_immutable<T> {
            		throw new IllegalArgumentException("prevNode is null");
 		}
 
-		prevNode.next = new Node<T>(value, prevNode.next);
-		return null;
+		Node<T> newNode = new Node<T>(value, prevNode.next); // create new node with the value
+
+		Node<T> newListNode = copyList(this.head, prevNode, newNode); // call copyList to get the new node for the list
+		return new LList_immutable<>(newListNode); // return the new list object
+
 	}
 	/*
 	 * added by Smita
 	 * Created a new constructor for LList_immutable class and helper method called copyList
 	 */
-
 	private Node<T> copyList(Node<T> current, Node<T> prevNode, Node<T> newNode) {
 		if (current == null) {
 			return null;
